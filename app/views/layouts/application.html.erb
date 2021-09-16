@@ -11,5 +11,27 @@
 
   <body>
     <%= yield %>
+    <h1>This is a radio station </h1>
+	<div class="container-radio">
+		<div class="stations-title">
+      <h2>STATIONS</h2>
+      <h3 id = "stations-name"></h3>
+      <h3 id = "stations-frequency"></h3>
+
+    </div>
+</div>
+<script>
+const stationName = document.querySelector('#stations-name');
+const stationFrequency = document.querySelector('#stations-frequency');
+const url = 'https://teclead.de/recruiting/radios';
+  fetch(url)
+    .then(response => response.json())
+    .then((data) => {
+      // console.log(data.radios[0].name);
+      stationName.innerHTML = data.radios[0].name;
+      stationFrequency.innerHTML = data.radios[0].frequency;
+      // station.innerHTML = data.radios.frequency;
+});
+</script>
   </body>
 </html>
